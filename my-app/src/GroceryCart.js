@@ -6,19 +6,20 @@ export default function GroceryCart() {
   // declare and initialize state 
 
 const [cart, setCart] = useState([]);
+
   const addItem = (item) => {
- setCart((prev)=>{
-return [ item, ...prev];
+     setCart((prev)=>{               
+    return [ item, ...prev];
  });
    };
 
   const removeItem = (targetIndex) => {
- setCart((prev) => {
-   return prev.filter((item, index)=> 
- index !== targetIndex);
+        setCart((prev) => {
+        return prev.filter((item, index)=> 
+         index !== targetIndex);
  });
-
   };
+  
 
   return (
     <div>
@@ -30,10 +31,16 @@ return [ item, ...prev];
           </li>
         ))}
       </ul>
-      <h2>Produce</h2>
-      <ItemList items={produce} onItemClick={addItem} />
-      <h2>Pantry Items</h2>
-      <ItemList items={pantryItems} onItemClick={addItem} />
+      <div className="container">
+          <div className="produce">
+               <h2>Produce</h2>
+            <ItemList items={produce} onItemClick={addItem} />
+          </div>
+          <div className="pantry">
+               <h2>Pantry Items</h2>
+             <ItemList items={pantryItems} onItemClick={addItem} />
+          </div>
+      </div>
     </div>
   );
 }
